@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(portal)/portal/page": "app/(portal)/portal/page.js",
+  "/(portal)/portal/inventory/page": "app/(portal)/portal/inventory/page.js",
+  "/(portal)/portal/invoices/page": "app/(portal)/portal/invoices/page.js",
+  "/(portal)/portal/notifications/page": "app/(portal)/portal/notifications/page.js",
+  "/(portal)/portal/settings/page": "app/(portal)/portal/settings/page.js",
+  "/(marketing)/page": "app/(marketing)/page.js"
+}
