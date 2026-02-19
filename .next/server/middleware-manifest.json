@@ -10,15 +10,38 @@
       "page": "/",
       "matchers": [
         {
-          "regexp": "^/.*$",
-          "originalSource": "/:path*"
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/portal(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(.json)?[\\/#\\?]?$",
+          "originalSource": "/portal/:path*"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/admin(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(.json)?[\\/#\\?]?$",
+          "originalSource": "/admin/:path*"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/ops(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(.json)?[\\/#\\?]?$",
+          "originalSource": "/ops/:path*"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/login(.json)?[\\/#\\?]?$",
+          "originalSource": "/login"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/register(.json)?[\\/#\\?]?$",
+          "originalSource": "/register"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/forgot-password(.json)?[\\/#\\?]?$",
+          "originalSource": "/forgot-password"
         }
       ],
       "wasm": [],
       "assets": [],
       "env": {
-        "__NEXT_BUILD_ID": "development",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "A3IVVgMTwgGbpnmQV6YsT2kKK2FLW9s9fQNKLFGdaRk="
+        "__NEXT_BUILD_ID": "pL8Iy6gyaAGFzS2JPJXvI",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "MvkXe1TQRHiVDK+y6VaDIaPeoPGuGg1DTjh0ucMEHwA=",
+        "__NEXT_PREVIEW_MODE_ID": "822e9c06ccfcf6b883495d2cb7ade40b",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "322d8ae0abfb0ea5459e0c4e2e12ed78b9e85f181747ba9b8fea524f66134e90",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "ef83aaadd8c58b1cff915c06f098d345c2a9d77e0be81641aa45775d70e06b36"
       }
     }
   },
