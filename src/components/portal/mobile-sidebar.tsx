@@ -11,12 +11,14 @@ import {
   Settings,
   Bell,
   X,
+  Ship,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/portal", label: "Dashboard", icon: LayoutDashboard },
   { href: "/portal/shipments", label: "Shipments", icon: Package },
+  { href: "/portal/ghana-line", label: "Ghana Line", icon: Ship },
   { href: "/portal/inventory", label: "Inventory", icon: Warehouse },
   { href: "/portal/orders", label: "Orders", icon: ShoppingCart },
   { href: "/portal/invoices", label: "Invoices", icon: FileText },

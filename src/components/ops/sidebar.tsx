@@ -63,7 +63,7 @@ export function OpsSidebar() {
               className={cn(
                 "flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-amber-500 text-white shadow-sm"
+                  ? "bg-orange text-white shadow-sm"
                   : "text-white/65 hover:bg-white/10 hover:text-white"
               )}
             >

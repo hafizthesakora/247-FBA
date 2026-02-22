@@ -14,6 +14,7 @@ import {
   HardHat,
   Activity,
   Map,
+  Ship,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +22,7 @@ const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/clients", label: "Clients", icon: Users },
   { href: "/admin/shipments", label: "Shipments", icon: Package },
+  { href: "/admin/ghana-line", label: "Ghana Line", icon: Ship },
   { href: "/admin/orders", label: "Orders", icon: ShoppingCart },
   { href: "/admin/invoices", label: "Invoices", icon: FileText },
   { href: "/admin/settings", label: "Settings", icon: Settings },
@@ -49,7 +51,7 @@ export function AdminMobileSidebar({ open, onClose }: AdminMobileSidebarProps) {
       <div className="fixed left-0 top-0 h-full w-64 z-50 bg-navy-950 text-white md:hidden">
         <div className="flex items-center justify-between px-4 h-16 border-b border-white/10">
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white font-heading text-xs font-bold">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange text-white font-heading text-xs font-bold">
               24/7
             </div>
             <span className="font-heading text-sm font-bold">Admin</span>
@@ -72,7 +74,7 @@ export function AdminMobileSidebar({ open, onClose }: AdminMobileSidebarProps) {
                 className={cn(
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-blue-600 text-white"
+                    ? "bg-orange text-white"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
                 )}
               >
@@ -98,7 +100,7 @@ export function AdminMobileSidebar({ open, onClose }: AdminMobileSidebarProps) {
                 className={cn(
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-blue-600 text-white"
+                    ? "bg-orange text-white"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
                 )}
               >

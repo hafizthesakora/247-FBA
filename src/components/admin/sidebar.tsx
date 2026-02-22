@@ -4,19 +4,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Users, Package, ShoppingCart, FileText,
-  Settings, BarChart3, HardHat, Activity, Map,
+  Settings, BarChart3, HardHat, Activity, Map, Ship,
   PanelLeftClose, PanelLeftOpen,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 const navItems = [
-  { href: "/admin",           label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/clients",   label: "Clients",   icon: Users },
-  { href: "/admin/shipments", label: "Shipments", icon: Package },
-  { href: "/admin/orders",    label: "Orders",    icon: ShoppingCart },
-  { href: "/admin/invoices",  label: "Invoices",  icon: FileText },
-  { href: "/admin/settings",  label: "Settings",  icon: Settings },
+  { href: "/admin",              label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/clients",      label: "Clients",   icon: Users },
+  { href: "/admin/shipments",    label: "Shipments", icon: Package },
+  { href: "/admin/ghana-line",   label: "Ghana Line",icon: Ship },
+  { href: "/admin/orders",       label: "Orders",    icon: ShoppingCart },
+  { href: "/admin/invoices",     label: "Invoices",  icon: FileText },
+  { href: "/admin/settings",     label: "Settings",  icon: Settings },
 ];
 
 const opsNavItems = [
@@ -37,7 +38,7 @@ export function AdminSidebar() {
     )}>
       {/* Header */}
       <div className="flex items-center h-16 border-b border-white/10 px-3 gap-2">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-600 font-heading text-[11px] font-bold text-white">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange font-heading text-[11px] font-bold text-white">
           24/7
         </div>
         {!collapsed && (
@@ -72,7 +73,7 @@ export function AdminSidebar() {
               className={cn(
                 "flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-blue-600 text-white shadow-sm"
+                  ? "bg-orange text-white shadow-sm"
                   : "text-white/65 hover:bg-white/10 hover:text-white"
               )}
             >
@@ -100,7 +101,7 @@ export function AdminSidebar() {
               className={cn(
                 "flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-blue-600 text-white shadow-sm"
+                  ? "bg-orange text-white shadow-sm"
                   : "text-white/65 hover:bg-white/10 hover:text-white"
               )}
             >

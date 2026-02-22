@@ -91,6 +91,19 @@ enum TaskType {
   CUSTOM
 }
 
+enum GhanaLineStatus {
+  BOOKING_RECEIVED
+  GOODS_COLLECTED
+  AT_WAREHOUSE_DE
+  CUSTOMS_EXPORT
+  ON_VESSEL
+  IN_TRANSIT
+  AT_PORT_GH
+  CUSTOMS_IMPORT
+  OUT_FOR_DELIVERY
+  DELIVERED
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -104,15 +117,16 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  accounts         Account[]
-  sessions         Session[]
-  shipments        Shipment[]
-  orders           Order[]
-  invoices         Invoice[]
-  notifications    Notification[]
-  assignedStations Station[]     @relation("StationOperator")
-  assignedTasks    Task[]        @relation("TaskAssignee")
-  activityLogs     ActivityLog[]
+  accounts           Account[]
+  sessions           Session[]
+  shipments          Shipment[]
+  orders             Order[]
+  invoices           Invoice[]
+  notifications      Notification[]
+  assignedStations   Station[]          @relation("StationOperator")
+  assignedTasks      Task[]             @relation("TaskAssignee")
+  activityLogs       ActivityLog[]
+  ghanaLineShipments GhanaLineShipment[]
 }
 
 model Account {
@@ -268,4 +282,28 @@ model ActivityLog {
   createdAt  DateTime @default(now())
 
   user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model GhanaLineShipment {
+  id             String          @id @default(cuid())
+  bookingRef     String          @unique @default(cuid())
+  status         GhanaLineStatus @default(BOOKING_RECEIVED)
+  userId         String
+  senderName     String
+  senderPhone    String?
+  receiverName   String
+  receiverPhone  String
+  receiverAddress String         @db.Text
+  description    String          @db.Text
+  weight         Float?
+  volume         Float?
+  containerRef   String?
+  vesselName     String?
+  estimatedArrival DateTime?
+  notes          String?         @db.Text
+  adminNotes     String?         @db.Text
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Package, Warehouse, ShoppingCart,
-  FileText, Settings, Bell, PanelLeftClose, PanelLeftOpen,
+  FileText, Settings, Bell, PanelLeftClose, PanelLeftOpen, Ship,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -12,6 +12,7 @@ import { useState } from "react";
 const navItems = [
   { href: "/portal",              label: "Dashboard",    icon: LayoutDashboard },
   { href: "/portal/shipments",    label: "Shipments",    icon: Package },
+  { href: "/portal/ghana-line",   label: "Ghana Line",   icon: Ship },
   { href: "/portal/inventory",    label: "Inventory",    icon: Warehouse },
   { href: "/portal/orders",       label: "Orders",       icon: ShoppingCart },
   { href: "/portal/invoices",     label: "Invoices",     icon: FileText },
