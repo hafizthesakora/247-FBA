@@ -17,6 +17,8 @@ export async function GET() {
     unpaidInvoices,
     recentShipments,
     recentClients,
+    shipmentsByStatus,
+    totalOperators,
   ] = await Promise.all([
     prisma.user.count({ where: { role: "CLIENT" } }),
     prisma.shipment.count(),
@@ -33,7 +35,7 @@ export async function GET() {
     }),
     prisma.shipment.findMany({
       orderBy: { createdAt: "desc" },
-      take: 5,
+      take: 6,
       select: {
         id: true,
         trackingNumber: true,
@@ -48,7 +50,16 @@ export async function GET() {
       take: 5,
       select: { id: true, name: true, email: true, company: true, createdAt: true },
     }),
+    prisma.shipment.groupBy({
+      by: ["status"],
+      _count: { status: true },
+    }),
+    prisma.user.count({ where: { role: "OPERATOR" } }),
   ]);
+
+  const pipeline = Object.fromEntries(
+    shipmentsByStatus.map((s) => [s.status, s._count.status])
+  );
 
   return NextResponse.json({
     totalClients,
@@ -59,5 +70,7 @@ export async function GET() {
     unpaidInvoices,
     recentShipments,
     recentClients,
+    pipeline,
+    totalOperators,
   });
 }
