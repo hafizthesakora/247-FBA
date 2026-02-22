@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin, Send, Loader2, Clock, ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
+import { AnimateIn } from "@/components/shared/animate-in";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Toast } from "@/components/shared/toast";
-import { AnimateIn } from "@/components/shared/animate-in";
 import { SITE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -74,28 +74,42 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="relative pt-32 pb-16 bg-navy-900">
-        <Container>
-          <AnimateIn>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+      {/* ─── Hero ─── */}
+      <section className="relative pt-40 pb-24 overflow-hidden">
+        <Image
+          src="/images/f24df04b-8b00-47d3-a9c8-ec4d4a70d645.jpg"
+          alt="Contact 24/7 FBA Prep"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-navy-900/75" />
+        <Container className="relative z-10">
+          <AnimateIn direction="up">
+            <span className="inline-block text-sm font-semibold text-orange uppercase tracking-wider mb-4">
+              Contact Us
+            </span>
+            <h1 className="font-heading text-5xl md:text-6xl font-bold text-white mb-5 max-w-2xl">
               Get in Touch
             </h1>
-            <p className="text-xl text-navy-300 max-w-2xl">
-              Ready to streamline your Amazon FBA operations? Request a free quote
-              or send us a message.
+            <p className="text-xl text-white/75 max-w-2xl leading-relaxed">
+              Ready to streamline your Amazon FBA operations? Request a free quote or
+              send us a message — we respond within 24 hours.
             </p>
           </AnimateIn>
         </Container>
       </section>
 
-      <Section bg="offwhite">
+      {/* ─── Contact Section ─── */}
+      <section className="py-20 bg-surface-offwhite">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Form */}
-            <AnimateIn className="lg:col-span-2" direction="left">
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-card">
-                {/* Form Type Tabs */}
-                <div className="flex gap-2 sm:gap-4 mb-8 p-1 bg-surface-offwhite rounded-lg">
+            {/* ── Form ── */}
+            <div className="lg:col-span-2">
+              <div className="bg-white rounded-2xl p-6 sm:p-10 shadow-card">
+                {/* Tabs */}
+                <div className="flex gap-2 mb-8 p-1 bg-surface-offwhite rounded-xl">
                   <button
                     onClick={() => { setFormType("quote"); setSubmitted(false); }}
                     className={cn(
@@ -121,11 +135,11 @@ export default function ContactPage() {
                 </div>
 
                 {submitted ? (
-                  <div className="text-center py-12">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mx-auto mb-4">
-                      <Send className="h-8 w-8 text-green-600" />
+                  <div className="text-center py-16">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 mx-auto mb-5">
+                      <Send className="h-9 w-9 text-green-600" />
                     </div>
-                    <h3 className="font-heading text-2xl font-bold text-text-dark mb-2">
+                    <h3 className="font-heading text-2xl font-bold text-navy-900 mb-2">
                       Message Sent!
                     </h3>
                     <p className="text-text-secondary mb-6">
@@ -201,7 +215,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full flex items-center justify-center gap-2 py-3.5 rounded-lg bg-orange text-white font-semibold hover:bg-orange-600 transition-all duration-300 disabled:opacity-50 hover:shadow-md active:scale-[0.99]"
+                      className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-orange text-white font-semibold hover:bg-orange-600 transition-all duration-300 disabled:opacity-50 hover:shadow-md active:scale-[0.99]"
                     >
                       {loading ? (
                         <>
@@ -209,20 +223,21 @@ export default function ContactPage() {
                           Sending...
                         </>
                       ) : formType === "quote" ? (
-                        "Request Quote"
+                        <>Request Quote <ArrowRight className="h-4 w-4" /></>
                       ) : (
-                        "Send Message"
+                        <>Send Message <ArrowRight className="h-4 w-4" /></>
                       )}
                     </button>
                   </form>
                 )}
               </div>
-            </AnimateIn>
+            </div>
 
-            {/* Sidebar */}
-            <AnimateIn direction="right" delay={0.2} className="space-y-6">
-              <div className="bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover transition-shadow duration-300">
-                <h3 className="font-heading text-lg font-bold text-text-dark mb-4">
+            {/* ── Sidebar ── */}
+            <div className="space-y-6">
+              {/* Contact Info */}
+              <div className="bg-white rounded-2xl p-6 shadow-card">
+                <h3 className="font-heading text-lg font-bold text-navy-900 mb-5">
                   Contact Information
                 </h3>
                 <div className="space-y-4">
@@ -230,7 +245,7 @@ export default function ContactPage() {
                     href={`mailto:${SITE_CONFIG.contact.email}`}
                     className="flex items-center gap-3 text-sm text-text-secondary hover:text-orange transition-colors group"
                   >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange/10 group-hover:bg-orange/20 transition-colors">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange/10 group-hover:bg-orange/20 transition-colors shrink-0">
                       <Mail className="h-4 w-4 text-orange" />
                     </div>
                     {SITE_CONFIG.contact.email}
@@ -239,7 +254,7 @@ export default function ContactPage() {
                     href={`tel:${SITE_CONFIG.contact.phone.replace(/\s/g, "")}`}
                     className="flex items-center gap-3 text-sm text-text-secondary hover:text-orange transition-colors group"
                   >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange/10 group-hover:bg-orange/20 transition-colors">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange/10 group-hover:bg-orange/20 transition-colors shrink-0">
                       <Phone className="h-4 w-4 text-orange" />
                     </div>
                     {SITE_CONFIG.contact.phone}
@@ -259,20 +274,24 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover transition-shadow duration-300">
-                <h3 className="font-heading text-lg font-bold text-text-dark mb-4">
-                  Business Hours
-                </h3>
+              {/* Business Hours */}
+              <div className="bg-white rounded-2xl p-6 shadow-card">
+                <div className="flex items-center gap-2 mb-5">
+                  <Clock className="h-5 w-5 text-orange" />
+                  <h3 className="font-heading text-lg font-bold text-navy-900">
+                    Business Hours
+                  </h3>
+                </div>
                 <div className="space-y-3 text-sm text-text-secondary">
                   <div className="flex justify-between items-center">
                     <span>Monday — Friday</span>
-                    <span className="font-medium text-text-dark bg-green-50 px-2 py-0.5 rounded text-xs">
+                    <span className="font-medium bg-green-50 text-green-700 px-2 py-0.5 rounded text-xs">
                       08:00 — 18:00
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span>Saturday</span>
-                    <span className="font-medium text-text-dark bg-yellow-50 px-2 py-0.5 rounded text-xs">
+                    <span className="font-medium bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded text-xs">
                       09:00 — 14:00
                     </span>
                   </div>
@@ -285,7 +304,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-navy-900 rounded-xl p-6 text-white">
+              {/* Quick Call */}
+              <div className="bg-navy-900 rounded-2xl p-6 text-white">
                 <h3 className="font-heading text-lg font-bold mb-2">
                   Need a quick response?
                 </h3>
@@ -300,10 +320,10 @@ export default function ContactPage() {
                   {SITE_CONFIG.contact.phone}
                 </a>
               </div>
-            </AnimateIn>
+            </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       <Toast message={toast.message} type={toast.type} show={toast.show} onClose={closeToast} />
     </>

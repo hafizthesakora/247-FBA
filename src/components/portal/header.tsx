@@ -3,8 +3,22 @@
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Bell, LogOut, Settings, User, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+function getPageTitle(pathname: string): string {
+  if (pathname === "/portal") return "Dashboard";
+  if (pathname.startsWith("/portal/shipments/new")) return "New Shipment";
+  if (pathname.match(/^\/portal\/shipments\/.+/)) return "Shipment Details";
+  if (pathname.startsWith("/portal/shipments")) return "Shipments";
+  if (pathname.startsWith("/portal/inventory")) return "Inventory";
+  if (pathname.startsWith("/portal/orders")) return "Orders";
+  if (pathname.startsWith("/portal/invoices")) return "Invoices";
+  if (pathname.startsWith("/portal/notifications")) return "Notifications";
+  if (pathname.startsWith("/portal/settings")) return "Settings";
+  return "Client Portal";
+}
 
 interface PortalHeaderProps {
   onMobileMenuToggle?: () => void;
@@ -12,6 +26,7 @@ interface PortalHeaderProps {
 
 export function PortalHeader({ onMobileMenuToggle }: PortalHeaderProps) {
   const { data: session } = useSession();
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +50,7 @@ export function PortalHeader({ onMobileMenuToggle }: PortalHeaderProps) {
           <Menu className="h-5 w-5 text-navy-900" />
         </button>
         <h2 className="font-heading text-lg font-semibold text-navy-900 hidden sm:block">
-          Client Portal
+          {getPageTitle(pathname)}
         </h2>
       </div>
 

@@ -33,7 +33,7 @@ export function AdminHeader({ onMobileMenuToggle }: AdminHeaderProps) {
           <Menu className="h-5 w-5 text-navy-900" />
         </button>
         <div className="flex items-center gap-2">
-          <Shield className="h-4 w-4 text-orange" />
+          <Shield className="h-4 w-4 text-blue-600" />
           <h2 className="font-heading text-lg font-semibold text-navy-900 hidden sm:block">
             Admin Panel
           </h2>
@@ -45,8 +45,8 @@ export function AdminHeader({ onMobileMenuToggle }: AdminHeaderProps) {
           onClick={() => setMenuOpen(!menuOpen)}
           className="flex items-center gap-2 p-2 rounded-lg hover:bg-surface-offwhite transition-colors"
         >
-          <div className="h-8 w-8 rounded-full bg-orange/10 flex items-center justify-center">
-            <User className="h-4 w-4 text-orange" />
+          <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <User className="h-4 w-4 text-blue-600" />
           </div>
           <span className="text-sm font-medium text-navy-900 hidden sm:block">
             {session?.user?.name || "Admin"}

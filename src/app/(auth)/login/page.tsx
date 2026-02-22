@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
@@ -32,9 +32,8 @@ export default function LoginPage() {
         return;
       }
 
-      // Fetch session to determine role-based redirect
-      const res = await fetch("/api/auth/session");
-      const session = await res.json();
+      // Get fresh session (not cached) for role-based redirect
+      const session = await getSession();
 
       if (session?.user?.role === "ADMIN") {
         router.push("/admin");

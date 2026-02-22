@@ -37,7 +37,7 @@ export function OpsMobileSidebar({ open, onClose }: OpsMobileSidebarProps) {
       <div className="fixed left-0 top-0 h-full w-64 z-50 bg-navy-950 text-white md:hidden">
         <div className="flex items-center justify-between px-4 h-16 border-b border-white/10">
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500 text-white">
               <HardHat className="h-5 w-5" />
             </div>
             <span className="font-heading text-sm font-bold">Operations</span>
@@ -60,7 +60,7 @@ export function OpsMobileSidebar({ open, onClose }: OpsMobileSidebarProps) {
                 className={cn(
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-orange text-white"
+                    ? "bg-amber-500 text-white"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
                 )}
               >
